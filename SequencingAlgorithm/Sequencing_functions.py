@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[4]:
-
-
 import matplotlib as mpl
 import matplotlib.pyplot as plt 
 from matplotlib import cm
@@ -33,14 +27,7 @@ from itertools import combinations
 import copy
 
 
-# In[1]:
-
-
 nl_small = {18:"H2O",17:"NH3 loss",35:"NH3+H2O",36:"H2O+H2O",44:"C2H4O",45:"CO+NH3",46:"CO+H2O"}
-
-
-# In[5]:
-
 
 #Calculate the neutral loss between two masses and get the list of structures in to correct format
 
@@ -49,10 +36,6 @@ def get_neutralloss(smallermass_d,highermass_d,nl_lib):
     dfnl = nl_lib[nl_lib["Mass"]==round(highermass_d-smallermass_d)]
     nls = [[seq, type_] for seq, type_ in zip(dfnl["Sequence"].tolist(), dfnl["Type"].tolist())]
     return nls
-
-
-# In[3]:
-
 
 #Check if sequence has more than 1 terminal modification
 
@@ -63,10 +46,6 @@ def check_sequence(sequence):
         return False
     else:
         return True
-
-
-# In[6]:
-
 
 #Sequence filter before M 
 
@@ -154,10 +133,6 @@ def contain_aa_potential_modified_firstpath(smallermass_d,highermass_d,sequence,
                     
     return (sequence, "ok")
 
-
-# In[2]:
-
-
 #Sequence filter with M identified
 
 def contain_aa_potential_modified_nextpaths(smallermass_d,seq,M_d,frag_lib,nl_lib,nl_small,modifications):
@@ -233,9 +208,6 @@ def contain_aa_potential_modified_nextpaths(smallermass_d,seq,M_d,frag_lib,nl_li
     return (M_strucs, "ok")
 
 
-# In[3]:
-
-
 #Path filter of all path
 
 #Input include the series of mass (path), the molecular mass or destination (M), 
@@ -295,9 +267,6 @@ def path_filter(path, M_d, sequence,frag_lib,nl_lib,nl_small,modifications):
     return sequence
 
 
-# In[8]:
-
-
 #Find overlapping M 
 
 def find_overlapping_components(list1, list2):
@@ -307,26 +276,15 @@ def find_overlapping_components(list1, list2):
     return list(overlapping_components)
 
 
-# In[9]:
-
-
 def reverse_list(input_list):
     reversed_list = input_list[::-1]
     return reversed_list
-
-
-# In[8]:
-
 
 def strip_func(frag, modifications):
     modifications = modifications
     for mod in modifications.keys():
         frag = frag.replace(mod, "")
     return frag
-
-
-# In[11]:
-
 
 def contains_aa(big_str, small_str):
     # Count occurrences of each letter in both strings
@@ -346,16 +304,9 @@ def contains_aa(big_str, small_str):
 
     return True
 
-
-# In[12]:
-
-
 def alphabetize_string(string):
     # Convert string to a list of characters, sort it, and join back to form a string
     return ''.join(sorted(string))
-
-
-# In[9]:
 
 
 def top_down_filter(sequence,modifications):
@@ -372,10 +323,6 @@ def top_down_filter(sequence,modifications):
                         new_list.append(fs)
         sequence[ms[i+1]] = new_list
     return sequence
-
-
-# In[14]:
-
 
 def simplify_M(overlappingM):
     final = []
