@@ -223,9 +223,7 @@ while nn < total_iterations:
 
     nn+=1
 
-
-# In[ ]:
-
-
-
+# all_est_labels stores the signal assignment of each simulation using the partitioning algorithm with the corresponding parameters
+# est_labels_naives stores the signal assignment of each simulation if no partitioning algorithm is used
+# labels stores the ground truth
 
